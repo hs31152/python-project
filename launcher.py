@@ -8,19 +8,11 @@ app = Flask(__name__)
 
 
 projects = {
-    "server-wise-count": "C:\\Users\\Harshit\\OneDrive - Teledgers Technology Private Limited\Desktop\\new py codes\\python 3 main py codes\\SERVER WISE COUNT.py",
-    "total-error-code-wise-count": "C:\\Users\\Harshit\\OneDrive - Teledgers Technology Private Limited\Desktop\\new py codes\\python 3 main py codes\\TOTAL ERROR CODE WISE COUNT.py",
-    "logs-to-xml": "C:\\Users\\Harshit\\OneDrive - Teledgers Technology Private Limited\Desktop\\new py codes\\python 3 main py codes\\LOGS to XML.py",
-    "epoch-convertor": "C:\\Users\\Harshit\\OneDrive - Teledgers Technology Private Limited\Desktop\\new py codes\\python 3 main py codes\\Test.py",
-    "Excel-process": "C:\\Users\\Harshit\\OneDrive - Teledgers Technology Private Limited\Desktop\\new py codes\\python 3 main py codes\\excel_proess.py"
-}
-
-project_ports = {
-    "server-wise-count": 5001,
-    "total-error-code-wise-count": 5002,
-    "logs-to-xml": 5003,
-    "epoch-convertor": 5004,
-    "Excel-process": 5005
+    "server-wise-count": os.path.join(BASE_DIR, "SERVER WISE COUNT.py"),
+    "total-error-code-wise-count": os.path.join(BASE_DIR, "TOTAL ERROR CODE WISE COUNT.py"),
+    "logs-to-xml": os.path.join(BASE_DIR, "LOGS to XML.py"),
+    "epoch-convertor": os.path.join(BASE_DIR, "Test.py"),
+    "excel-process": os.path.join(BASE_DIR, "excel_proess.py"),
 }
 
 LOGO_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRQ0HqT9dk3DeLLbBHebie1wSK7HYWCudOCw&s"
