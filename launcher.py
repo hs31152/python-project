@@ -6,15 +6,28 @@ import time
 
 app = Flask(__name__)
 
+# Define BASE_DIR
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 
+# Define project files with paths
 projects = {
     "server-wise-count": os.path.join(BASE_DIR, "SERVER WISE COUNT.py"),
     "total-error-code-wise-count": os.path.join(BASE_DIR, "TOTAL ERROR CODE WISE COUNT.py"),
     "logs-to-xml": os.path.join(BASE_DIR, "LOGS to XML.py"),
     "epoch-convertor": os.path.join(BASE_DIR, "Test.py"),
-    "excel-process": os.path.join(BASE_DIR, "excel_proess.py"),
+    "excel-process": os.path.join(BASE_DIR, "excel_process.py"),
 }
 
+# Define ports for each project
+project_ports = {
+    "server-wise-count": 5001,
+    "total-error-code-wise-count": 5002,
+    "logs-to-xml": 5003,
+    "epoch-convertor": 5004,
+    "excel-process": 5005
+}
+
+# Social & Contact Info
 LOGO_URL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRRQ0HqT9dk3DeLLbBHebie1wSK7HYWCudOCw&s"
 INSTAGRAM_URL = "https://instagram.com/harshit__2244"
 EMAIL = "mailto:harshitsharma31152@gmail.com"
@@ -29,6 +42,7 @@ def is_port_in_use(port):
 
 @app.route("/")
 def home():
+    """Homepage with project launch buttons."""
     return render_template_string("""
     <!DOCTYPE html>
     <html lang="en">
@@ -145,15 +159,11 @@ def launch_project(project_name):
         if is_port_in_use(project_port):
             return redirect(f"http://127.0.0.1:{project_port}")
 
-        process = subprocess.Popen(
-            ["python", project_path, "--host=127.0.0.1", "--port=" + str(project_port)], 
-            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
-            creationflags=subprocess.CREATE_NEW_CONSOLE
-        )
+        process = subprocess.Popen(["python", project_path], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         time.sleep(3)
         return redirect(f"http://127.0.0.1:{project_port}")
     
     return "Project not found", 404
 
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000, debug=False)
+    app.run(host="0.0.0.0", port=5000, debug=True)
