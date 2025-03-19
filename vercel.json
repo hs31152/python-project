@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    { "src": "launcher.py", "use": "@vercel/python" },
+    { "src": "SERVER_WISE_COUNT.py", "use": "@vercel/python" },
+    { "src": "TOTAL_ERROR_CODE_WISE_COUNT.py", "use": "@vercel/python" },
+    { "src": "LOGS_TO_XML.py", "use": "@vercel/python" },
+    { "src": "Test.py", "use": "@vercel/python" },
+    { "src": "Excel_process.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/", "dest": "launcher.py" },
+    { "src": "/server-wise-count", "dest": "SERVER_WISE_COUNT.py" },
+    { "src": "/total-error-code-wise-count", "dest": "TOTAL_ERROR_CODE_WISE_COUNT.py" },
+    { "src": "/logs-to-xml", "dest": "LOGS_TO_XML.py" },
+    { "src": "/epoch-convertor", "dest": "Test.py" },
+    { "src": "/excel-process", "dest": "Excel_process.py" }
+  ]
+}
